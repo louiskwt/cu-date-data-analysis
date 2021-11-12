@@ -1,16 +1,22 @@
 import pandas as pd
+from functools import reduce
 
-df1 = pd.read_csv("user.csv")
+df1 = pd.read_csv("csv/users.csv", sep=',')
 
-df2 = pd.read_csv("relationship.csv")
+df2 = pd.read_csv("csv/relationship.csv", sep=',')
 
-print(df2)
+df3 = pd.read_csv("csv/preference.csv", sep=',')
 
-# output = pd.merge(df1, df2, on="name", how="inner")
+df4 = pd.read_csv('csv/merged-users.csv', sep=',')
+
+# compile the list of dataframes
 
 
-# print(output)
+# Merging data_frames using reduce
+output_one = pd.merge(df4, df3, on="name", how="inner")
 
-# output.to_csv("merged.csv", index=False)
 
-# print('completed')
+# df_merged.to_csv('csv/mergedUsers.csv', index=False)
+output_one.to_csv('csv/merged-all.csv', index=False)
+
+print('Completed')
